@@ -195,7 +195,7 @@ class SettingsRenderer {
 	public function render_multiselect( $field, $key, $config, $value ): string {
 
 		if ( 'ppcp-multiselect' !== $config['type'] ) {
-			return $field;
+			return $field ?? '';
 		}
 
 		$options = array();
@@ -266,7 +266,7 @@ class SettingsRenderer {
 	 */
 	public function render_text_input( $field, $key, $config, $value ): string {
 
-		if ( 'ppcp-text-input' !== $config['type'] ) {
+		if ( 'ppcp-text-input' !== $config['type'] && 'text' !== $config['type'] ) {
 			return $field;
 		}
 
@@ -566,4 +566,3 @@ $data_rows_html
 			&& ( $this->paypal_vaulting_is_enabled() || $this->settings_status->pay_later_messaging_is_enabled() );
 	}
 }
-
